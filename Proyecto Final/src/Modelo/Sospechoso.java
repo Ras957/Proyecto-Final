@@ -15,12 +15,6 @@ public class Sospechoso {
     private String primerApellido;
     private String segundoApellido;
     private String dni;
-    String matricula1;
-    String matricula2;
-    String domiciolio1;
-    String domiciolio2;
-    String ubicacion1;
-    String ubicacion2;
     
     public Sospechoso(String nombre, String primerApellido, String segundoApellido,
             String dni){
