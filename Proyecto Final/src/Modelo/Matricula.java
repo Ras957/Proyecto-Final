@@ -8,8 +8,20 @@ package Modelo;
 
 /**
  * 
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Samuel Osuna Alcaide
  */
 public class Matricula {
-
-}
+    private String codigo;
+    
+    public Matricula(String cod){
+        this.codigo=cod;
+    }
+    
+    public void setCodigo(String cod){
+        this.codigo=cod;
+    }
+    
+    public String getCodigo(){
+        return this.codigo;
+    }
+   }
