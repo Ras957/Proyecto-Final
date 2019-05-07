@@ -48,8 +48,8 @@ public class Sospechoso {
     /**
      * @param primerApellido the primerApellido to set
      */
-    public void setPrimerApellido(String primerApellido) {
-        this.primerApellido = primerApellido;
+    public void setPrimerApellido(String apellido) {
+        this.primerApellido = apellido;
     }
 
     /**
@@ -62,8 +62,8 @@ public class Sospechoso {
     /**
      * @param segundoApellido the segundoApellido to set
      */
-    public void setSegundoApellido(String segundoApellido) {
-        this.segundoApellido = segundoApellido;
+    public void setSegundoApellido(String apellido) {
+        this.segundoApellido = apellido;
     }
 
     /**
