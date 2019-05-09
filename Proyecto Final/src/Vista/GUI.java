@@ -5,17 +5,29 @@
  */
 package Vista;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class GUI extends javax.swing.JFrame {
+    public ArrayList<String[]> myTableModel=new ArrayList();
 
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+    }
+    
+    public  void defaultTable(){   
+        String[] cols=new String[myTableModel.size()];
+        for(int i=0;i<myTableModel.size();i++){
+            cols[i]=myTableModel.get(i)[0];
+        }
+        Store defaultData=new Store(cols);
+        insertaLista(defaultData); 
     }
 
     /**
