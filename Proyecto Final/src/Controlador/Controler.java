@@ -19,10 +19,17 @@ public class Controler {
     
     public static ArrayList<String[]> cargaConfigracion(){
         File f=new File("data.xml");
-        ArrayList<String[]> result=new ArrayList<>();
+        ArrayList<String[]> resultado=new ArrayList<>();
         if(f.exists()){
-            result=LoadXML.getFields(f);
+            resultado=CargarXML.getFields(f);
         }
+        
+        if(resultado.size()==0){
+            String[] defaultcol=new String[3];
+            defaultcol[0]="Item";
+            resultado.add(defaultcol);
+        }
+        
         
         return resultado;
         
