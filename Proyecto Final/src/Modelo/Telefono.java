@@ -12,8 +12,9 @@ package Modelo;
  */
 public class Telefono {
         String Telefono;
-        boolean Tipo;
-        public Telefono(String Telefono, boolean Tipo){
+        String Tipo;
+        
+        public Telefono(String Telefono, String Tipo){
 		this.Telefono=Telefono;
 		this.Tipo=Tipo;
 	}
@@ -22,7 +23,7 @@ public class Telefono {
 		return this.Telefono;
 
 	}
-        public boolean getTipo(){
+        public String getTipo(){
 		return this.Tipo;
 
 	}
@@ -30,7 +31,7 @@ public class Telefono {
 		this.Telefono=Telefono;
 
 	}
-        public void setTipo(boolean Tipo){
+        public void setTipo(String Tipo){
 		this.Tipo=Tipo;
 
 	}
