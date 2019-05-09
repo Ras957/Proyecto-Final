@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package Controlador;
+package Modelo;
 
 /**
  * 
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class CargarXML {
-    
+public class Telefono {
+
 }
