@@ -11,5 +11,17 @@ package Modelo;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class Domicilio {
-
+    private String domicilio;
+    
+    public Domicilio(String d){
+        this.domicilio=d;
+    }
+    
+    public void setDomicilio(String d){
+        this.domicilio=d;
+    }
+    
+    public String getDomicilio(){
+        return this.domicilio;
+    }
 }
