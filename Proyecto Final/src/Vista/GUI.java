@@ -5,7 +5,10 @@
  */
 package Vista;
 
+import Controlador.Store;
 import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -29,6 +32,28 @@ public class GUI extends javax.swing.JFrame {
         Store defaultData=new Store(cols);
         insertaLista(defaultData); 
     }
+    
+    public void insertaLista(Store data){
+        DefaultTableModel model=new DefaultTableModel();
+        data.stockedItems.forEach((k,v)->{
+           model.addColumn(k, v);
+        });
+        jTable1.setModel(model);
+        //jTable1.setPreferredScrollableViewportSize(jTable1.getPreferredSize());  //no scroll
+        jButton1.setEnabled(false);
+         
+    }
+    
+    public JTable getTable(){
+        return this.jTable1;
+    }
+    
+    
+    
+    public void disableButton(){
+        this.jButton1.setEnabled(false);
+    }
+   
 
     /**
      * This method is called from within the constructor to initialize
