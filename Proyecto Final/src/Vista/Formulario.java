@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import javax.swing.JDialog;
+
 /**
  *
  * @author kerac
@@ -135,6 +137,11 @@ public class Formulario extends javax.swing.JFrame {
         jButton2.setText("Guardar sospechoso");
 
         jButton3.setText("Subir foto");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel11.setText("Nuevo Sospechoso");
@@ -304,6 +311,13 @@ public class Formulario extends javax.swing.JFrame {
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        JDialog dial=new JDialog();
+        FileChooserOpen ven = new FileChooserOpen(dial);
+        ven.parent.setVisible(true);
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
