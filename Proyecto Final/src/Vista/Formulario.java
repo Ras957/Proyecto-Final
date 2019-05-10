@@ -142,6 +142,11 @@ public class Formulario extends javax.swing.JFrame {
                 jButton3MouseClicked(evt);
             }
         });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel11.setText("Nuevo Sospechoso");
@@ -314,10 +319,17 @@ public class Formulario extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        JDialog dial=new JDialog();
-        FileChooserOpen ven = new FileChooserOpen(dial);
-        ven.parent.setVisible(true);
+        JDialog d = new JDialog(this,"Abrir",true); //true para que sea modal
+        FileChooserOpen f=new FileChooserOpen(d);
+        d.add(f);
+        System.out.println(this.getSize().getWidth());
+        d.setSize((int)this.getSize().getWidth(), (int)this.getSize().getHeight());
+        d.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
