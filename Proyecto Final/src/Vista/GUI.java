@@ -367,6 +367,7 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Anadir_Escala.png"))); // NOI18N
+        jButton1.setToolTipText("Agregar sospechoso");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -379,17 +380,26 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Buscar_Escala.png"))); // NOI18N
+        jButton2.setToolTipText("Buscar sospechoso");
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Propiedades_Escala.png"))); // NOI18N
+        jButton3.setToolTipText("Propiedades");
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Eliminar_Escala.png"))); // NOI18N
+        jButton4.setToolTipText("Eliminar sospechoso");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);
             }
         });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Ayuda_Escala.png"))); // NOI18N
+        jButton8.setToolTipText("Ayuda");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -397,6 +407,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Grupo_Escala.png"))); // NOI18N
+        jButton9.setToolTipText("Acompañantes");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -527,6 +538,10 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         jFrame1.dispose();
     }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
