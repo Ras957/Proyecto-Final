@@ -1,0 +1,9 @@
+insert into sospechoso(nombre,apellidos) values(nombre,apellidos);
+insert into vehiculo (matricula,id_Sospechoso) values(matricula,id);
+intert into correo(email,id_Sospechoso) values (email,id);
+intert into direccion(direccion,id_Sospechoso) values(direccion,id);
+insert into telefono(telefono,id_Sospechoso) values(telefono,id);
+insert into antecedentes(descripcion, id_Sospechoso) values(descripcion,id);
+insert into hechos(descripcion,id_Sospechoso) values(descripcion,id);
+insert into fotos(descripcion);
+
