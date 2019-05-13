@@ -351,6 +351,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -360,7 +361,7 @@ public class GUI extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido", "Teléfonos", "Correos", "Direcciones", "Acompañantes", "Matrículas", "Antecedentes", "Hechos", "Fotos"
+                "Nombre", "Apellidos", "Teléfonos", "Correos", "Direcciones", "Acompañantes", "Matrículas", "Antecedentes", "Hechos", "Fotos"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -405,7 +406,7 @@ public class GUI extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido", "Teléfonos", "Correos", "Direcciones", "Acompañantes", "Matrículas", "Antecedentes", "Hechos", "Fotos"
+                "Nombre", "Apellidos", "Teléfonos", "Correos", "Direcciones", "Acompañantes", "Matrículas", "Antecedentes", "Hechos", "Fotos"
             }
         ));
         jScrollPane4.setViewportView(jTable2);
