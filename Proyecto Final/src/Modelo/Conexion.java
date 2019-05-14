@@ -46,7 +46,7 @@ public class Conexion {
 	{
 		try
 		{
-		Class.forName("com.mysql.cj.jdbc.Driver");
+		Class.forName("com.mysql.jdbc.Driver");
          // Setup the connection with the DB
          
 		//conexion nomral
