@@ -6,6 +6,8 @@
 package Vista;
 
 import Controlador.Store;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JTable;
@@ -45,6 +47,11 @@ public class GUI extends javax.swing.JFrame {
         //jTable1.setPreferredScrollableViewportSize(jTable1.getPreferredSize());  //no scroll
         jButton1.setEnabled(false);
          
+    }
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/PoliceIcon.png"));
+    return retValue;
     }
     
     public JTable getTable(){
