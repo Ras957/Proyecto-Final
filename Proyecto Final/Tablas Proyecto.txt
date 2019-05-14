@@ -1,0 +1,131 @@
+drop database if exists Policia;
+
+Create database Policia;
+
+use Policia;
+
+Drop table if exists Vehiculo;
+Drop table if exists Telefono;
+
+Drop table if exists Antecedentes;
+Drop table if exists Correo;
+
+Drop table if exists Direccion;
+Drop table if exists Hechos;
+Drop table if exists Vehiculo;
+Drop table if exists Fotos;
+
+Drop table if exists Sospechoso
+
+
+Create table Sospechoso
+(
+	Id     int(8)   AUTO_INCREMENT,
+    Nombre  varchar(50),
+    Apellidos varchar(100),
+    Primary key (Id)
+);
+
+Create table Vehiculo(
+    Matricula char(10),
+    id_Sospechoso int(8),
+    id int(8) AUTO_INCREMENT,
+    Primary key(id),
+    foreign key (id_Sospechoso) references Sospechoso(Id)
+);
+
+
+Create table Telefono(
+    Telefono int(10),
+    Tipo varchar(20),
+    id_Sospechoso int(8),
+    id int(8) AUTO_INCREMENT,
+    Primary key(id),
+    foreign key (id_Sospechoso) references Sospechoso(Id)
+);
+
+Create table Antecedentes(
+    Descripcion varchar(200),
+    id_Sospechoso int(8),
+    id int(8) AUTO_INCREMENT,
+    Primary key(id,id_Sospechoso),
+    foreign key (id_Sospechoso) references Sospechoso(Id)
+);
+
+
+Create table Correos(
+    email char(50),
+    id_Sospechoso int(8),
+    id int(8) AUTO_INCREMENT,
+    Primary key(id),
+    foreign key (id_Sospechoso) references Sospechoso(Id)
+);
+
+
+Create table Direccion(
+    Direccion varchar(200),
+    id int(8) AUTO_INCREMENT,
+    id_Sospechoso int(8),
+    Primary key(id),
+    foreign key (id_Sospechoso) references Sospechoso(Id)
+);
+
+Create table Hechos(
+    Descripcion varchar(200),
+    id int(8) AUTO_INCREMENT,
+    id_Sospechoso int(8),
+    Primary key(id),
+    foreign key (id_Sospechoso) references Sospechoso(Id)
+);
+
+Create table Fotos(
+    Descripcion varchar(200),
+    id int(8) AUTO_INCREMENT,
+    imagen blob,
+    id_Sospechoso int(8),
+    Primary key(id),
+    foreign key (id_Sospechoso) references Sospechoso(Id)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
