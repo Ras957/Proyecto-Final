@@ -1,0 +1,51 @@
+Use Policia;
+
+delete from Vehiculo;
+delete from Telefono;
+
+delete from Antecedentes;
+delete from Correos;
+
+delete from Direccion;
+delete from Hechos;
+delete from Fotos;
+
+delete from acompanya;
+delete from Sospechoso;
+
+ALTER TABLE  `sospechoso` AUTO_INCREMENT =1;
+insert into Sospechoso (Nombre,Apellidos) values ('Antonio',	'Sanchez Moreno' );
+insert into Sospechoso (Nombre,Apellidos) values ('Marco',	'Polo' );
+
+
+
+insert into acompanya values (1,2);
+
+ALTER TABLE  `Vehiculo`  AUTO_INCREMENT =1;
+insert into Vehiculo (Matricula,id_Sospechoso)  values ( '0004-NAH',	1 );
+
+
+ALTER TABLE  `Telefono` AUTO_INCREMENT =1;
+insert into Telefono (Telefono,Tipo,id_Sospechoso)  values ( 682404274,   'Movil',    1 );
+
+
+ALTER TABLE  `Antecedentes` AUTO_INCREMENT =1;
+insert into Antecedentes (Descripcion,id_Sospechoso)  values ( 'Este tio es mu malo',	1 );
+
+ALTER TABLE  `Correos` AUTO_INCREMENT =1;
+insert into Correos (email,id_Sospechoso)  values ( 'ejemplo@gmail.com',	1 );
+
+
+insert into Direccion  (Direccion,id_Sospechoso) values ( 'Ronda de Curtidores, Nº2, B.J.D',	1 );
+
+
+
+
+
+
+
+
+
+
+
+

@@ -32,8 +32,8 @@ create table acompanya
 (
     Id_Sospechoso1 int(8),
     Id_Sospechoso2 int(8),
-    foreign key (id_Sospechoso1) references Sospechoso(Id);
-    foreign key (id_Sospechoso2) references Sospechoso(Id);
+    foreign key (id_Sospechoso1) references Sospechoso(Id) on delete cascade,
+    foreign key (id_Sospechoso2) references Sospechoso(Id) on delete cascade
 );
 
 Create table Vehiculo(
@@ -41,7 +41,7 @@ Create table Vehiculo(
     id_Sospechoso int(8),
     id int(8) AUTO_INCREMENT,
     Primary key(id),
-    foreign key (id_Sospechoso) references Sospechoso(Id)
+    foreign key (id_Sospechoso) references Sospechoso(Id) on delete cascade
 );
 
 
@@ -51,7 +51,7 @@ Create table Telefono(
     id_Sospechoso int(8),
     id int(8) AUTO_INCREMENT,
     Primary key(id),
-    foreign key (id_Sospechoso) references Sospechoso(Id)
+    foreign key (id_Sospechoso) references Sospechoso(Id) on delete cascade
 );
 
 Create table Antecedentes(
@@ -59,7 +59,7 @@ Create table Antecedentes(
     id_Sospechoso int(8),
     id int(8) AUTO_INCREMENT,
     Primary key(id),
-    foreign key (id_Sospechoso) references Sospechoso(Id)
+    foreign key (id_Sospechoso) references Sospechoso(Id) on delete cascade
 );
 
 
@@ -68,7 +68,7 @@ Create table Correos(
     id_Sospechoso int(8),
     id int(8) AUTO_INCREMENT,
     Primary key(id),
-    foreign key (id_Sospechoso) references Sospechoso(Id)
+    foreign key (id_Sospechoso) references Sospechoso(Id) on delete cascade
 );
 
 
@@ -77,7 +77,7 @@ Create table Direccion(
     id int(8) AUTO_INCREMENT,
     id_Sospechoso int(8),
     Primary key(id),
-    foreign key (id_Sospechoso) references Sospechoso(Id)
+    foreign key (id_Sospechoso) references Sospechoso(Id) on delete cascade
 );
 
 Create table Hechos(
@@ -85,7 +85,7 @@ Create table Hechos(
     id int(8) AUTO_INCREMENT,
     id_Sospechoso int(8),
     Primary key(id),
-    foreign key (id_Sospechoso) references Sospechoso(Id)
+    foreign key (id_Sospechoso) references Sospechoso(Id) on delete cascade
 );
 
 Create table Fotos(
@@ -94,7 +94,7 @@ Create table Fotos(
     imagen blob,
     id_Sospechoso int(8),
     Primary key(id),
-    foreign key (id_Sospechoso) references Sospechoso(Id)
+    foreign key (id_Sospechoso) references Sospechoso(Id) on delete cascade
 );
 
 
