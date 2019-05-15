@@ -73,7 +73,7 @@ public class Conexion2 {
 		//miConexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bbdd+"?user="+this.login+"&password="+this.password);
 		
 		//conexión completa para evitar errores de sincronizacion con el servidor
-		miConexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bbdd+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&user="+this.login+"&password="+this.password);
+		miConexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bbdd+", "+this.login+", "+this.password);
 		
         
 		this.estado=true;
