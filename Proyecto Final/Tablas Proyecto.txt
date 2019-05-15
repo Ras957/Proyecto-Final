@@ -12,10 +12,12 @@ Drop table if exists Correo;
 
 Drop table if exists Direccion;
 Drop table if exists Hechos;
-Drop table if exists Vehiculo;
+
 Drop table if exists Fotos;
 
-Drop table if exists Sospechoso
+Drop table if exists acompanya;
+Drop table if exists Sospechoso;
+
 
 
 Create table Sospechoso
@@ -24,6 +26,14 @@ Create table Sospechoso
     Nombre  varchar(50),
     Apellidos varchar(100),
     Primary key (Id)
+);
+
+create table acompanya
+(
+    Id_Sospechoso1 int(8),
+    Id_Sospechoso2 int(8),
+    foreign key (id_Sospechoso1) references Sospechoso(Id);
+    foreign key (id_Sospechoso2) references Sospechoso(Id);
 );
 
 Create table Vehiculo(
@@ -48,7 +58,7 @@ Create table Antecedentes(
     Descripcion varchar(200),
     id_Sospechoso int(8),
     id int(8) AUTO_INCREMENT,
-    Primary key(id,id_Sospechoso),
+    Primary key(id),
     foreign key (id_Sospechoso) references Sospechoso(Id)
 );
 

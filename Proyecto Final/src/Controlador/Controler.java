@@ -25,23 +25,8 @@ public class Controler {
     
     public static GUI vista;
     
-    public static ArrayList<String[]> cargaConfigracion(){
-        File f=new File("data.xml");
-        ArrayList<String[]> resultado=new ArrayList<>();
-        if(f.exists()){
-            resultado=CargarXML.getFields(f);
-        }
-        
-        if(resultado.size()==0){
-            String[] defaultcol=new String[3];
-            defaultcol[0]="Item";
-            resultado.add(defaultcol);
-        }
-        
-        
-        return resultado;
-        
-    }
+    
+    
     
     public static void guardar() {
         JTable jTable1 = vista.getTable();
