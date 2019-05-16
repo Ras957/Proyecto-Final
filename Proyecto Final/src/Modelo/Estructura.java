@@ -13,10 +13,10 @@ import java.sql.Statement;
  * @author Samuel Osuna Alcaide
  */
 public class Estructura {
-    
+    private static Conexion myConexion;
     public static String listarSospechosos() throws SQLException
 	{
-		String devuelve;
+		String devuelve = null;
 		//Cadena donde irán las sentencias sql de creación de tablas
 		String lineaSQL;
 		//Objeto de tipo Statement
@@ -35,7 +35,7 @@ public class Estructura {
           
 
 			//conectamos la sentencia a la base de datos
-			sentencia = miConexion.getConexion().createStatement();
+			sentencia = myConexion.getConexion().createStatement();
 			//ejecutamos la sentencia;
 			sentencia.executeUpdate(lineaSQL);
 			
@@ -61,7 +61,7 @@ public class Estructura {
             + " (primerApellido     varchar(20),"
             + " (segundoApellido     varchar(20))";
             
-            sentencia = miConexion.getConexion().createStatement();
+            sentencia = myConexion.getConexion().createStatement();
             sentencia.executeUpdate(lineaSQL);
         }catch(SQLException se){
             generada=false;
