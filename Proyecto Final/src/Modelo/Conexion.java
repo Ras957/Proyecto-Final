@@ -3,44 +3,66 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Modelo;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 /**
- * 
+ *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class Conexion {
-    	//Atributo que gestiona la conexión con la BBDD
-	private Connection miConexion;
-	
-	private String host; //Host que contiene la BBDD
-	private String bbdd; //Nombre de la BBDD
-	private String login; //Login 
-	private String password; //Password
-	private boolean estado=false;//Estado de la conexión
-	
-	
-	public Conexion(String host, String bbdd, String login, String password) 
-	{
-		this.host=host;
-		this.bbdd=bbdd;
-		this.login=login;
-		this.password=password;		
-	}
-	
-	/*Método: conectar()
-	Tipo: boolean
-	Parámetros: ninguno
-	Devuelve: booleano que indica el estado de la conexión
-	Funcionalidad: Realiza la conexión a la base de datos y pone el indicador de estado a true
-	en el caso de que la conexión se haya realizado de manera correcta */
-	
-	public boolean conectar() throws Exception
+
+    private Connection miConexion;
+    private String host; //Host que contiene la BBDD
+    private String bbdd; //Nombre de la BBDD
+    private String login; //Login 
+    private String password; //Password
+    private boolean estado = false;//Estado de la conexión
+
+    public Conexion() throws ParserConfigurationException, SAXException, IOException {
+        File file=new File("bbdd.xml");
+        DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance()
+                .newDocumentBuilder();
+        Document doc = dBuilder.parse(file);
+        if (doc.hasChildNodes()) {
+            NodeList nodeList = doc
+                    .getDocumentElement()
+                    .getChildNodes();
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Node node = nodeList.item(i);
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    switch (node.getNodeName()) {
+                        case "host":
+                            this.host = node.getTextContent();
+                            break;
+                        case "nombre":
+                            this.bbdd = node.getTextContent();
+                            break;
+                        case "login":
+                            this.login = node.getTextContent();
+                            break;
+                        case "password":
+                            this.password = node.getTextContent();
+                            break;
+                    }
+                }
+            }
+        }
+    }
+    
+    public boolean conectar() throws Exception
 	{
 		try
 		{
@@ -52,7 +74,7 @@ public class Conexion {
 		//miConexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bbdd+"?user="+this.login+"&password="+this.password);
 		
 		//conexión completa para evitar errores de sincronizacion con el servidor
-		miConexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bbdd+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&user="+this.login+"&password="+this.password);
+		miConexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bbdd+", "+this.login+", "+this.password);
 		
         
 		this.estado=true;
@@ -113,5 +135,7 @@ public class Conexion {
 	
 
 }//fin de clase
+
+
 
 
