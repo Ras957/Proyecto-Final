@@ -13,6 +13,7 @@ import java.sql.Statement;
  * @author Samuel Osuna Alcaide
  */
 public class Estructura {
+    
     public static String listarSospechosos() throws SQLException
 	{
 		String devuelve;
@@ -69,5 +70,6 @@ public class Estructura {
         return generada;
     }
 }
+
 
 
