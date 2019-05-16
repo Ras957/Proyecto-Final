@@ -91,11 +91,14 @@ Create table Hechos(
 Create table Fotos(
     Descripcion varchar(200),
     id int(8) AUTO_INCREMENT,
-    imagen blob,
+    imagen mediumblob,
     id_Sospechoso int(8),
     Primary key(id),
     foreign key (id_Sospechoso) references Sospechoso(Id) on delete cascade
 );
+
+
+
 
 
 

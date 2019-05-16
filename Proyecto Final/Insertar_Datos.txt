@@ -49,3 +49,6 @@ insert into Direccion  (Direccion,id_Sospechoso) values ( 'Ronda de Curtidores, 
 
 
 
+
+
+
