@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -18,9 +19,9 @@ public class Estructura {
 
     public static String listarSospechosos() throws SQLException {
         String devuelve = null;
-        //Cadena donde irán las sentencias sql de creación de tablas
+       
         String lineaSQL;
-        //Objeto de tipo Statement
+        
         Statement sentencia;
 
         lineaSQL = "Select sos.nombre, sos.apellidos, te.telefono, co.email, di.direccion, he.descripcion, an.descripcion, ve.matricula"
@@ -33,21 +34,20 @@ public class Estructura {
                 + "  and sos.id=an.id_Sospechoso"
                 + "  and sos.id=aco.id_Sospechoso1;";
 
-        //conectamos la sentencia a la base de datos
+        
         sentencia = myConexion.getConexion().createStatement();
-        //ejecutamos la sentencia;
-        sentencia.executeUpdate(lineaSQL);
-
-        //HAY QUE REPETIR ESTA OPERACIÓN PARA CADA UNA DE LAS TABLAS
+        
+        ResultSet rs =sentencia.executeQuery(lineaSQL);
+        
         return devuelve;
 
     }
     
     public static String buscarSospechosos() throws SQLException {
         String devuelve = null;
-        //Cadena donde irán las sentencias sql de creación de tablas
+       
         String lineaSQL;
-        //Objeto de tipo Statement
+        
         Statement sentencia;
 
         lineaSQL = "Select sos.nombre, sos.apellidos, te.numero, co.email, di.descripcion, he.descripcion, an.descripcion, ve.matricula"
@@ -58,12 +58,12 @@ public class Estructura {
                 + "  or (Select ve.matricula from vehiculo ve, sospechoso sos where ?=ve.id_Sospechoso)=ve.matricula"
                 + "  or ?=aco.Id_Sospechoso2;";
 
-        //conectamos la sentencia a la base de datos
+
         sentencia = myConexion.getConexion().createStatement();
-        //ejecutamos la sentencia;
+   
         sentencia.executeUpdate(lineaSQL);
 
-        //HAY QUE REPETIR ESTA OPERACIÓN PARA CADA UNA DE LAS TABLAS
+        
         return devuelve;
 
     }
