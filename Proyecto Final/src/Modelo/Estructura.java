@@ -28,7 +28,7 @@ public class Estructura {
         
         Statement sentencia;
 
-        lineaSQL = "Select sos.nombre, sos.apellidos, te.telefono, co.email, di.direccion, he.descripcion, an.descripcion, ve.matricula"
+        lineaSQL = "Select sos.nombre, sos.apellidos, te.telefono, te.tipo, co.email, di.direccion, he.descripcion hechos, an.descripcion antecedentes, ve.matricula"
                 + "  from sospechoso sos, telefono te, correos co, direccion di, hechos he, antecedentes an, vehiculo ve, acompanya aco"
                 + "  where sos.Id=ve.id_Sospechoso"
                 + "  and sos.Id=te.id_Sospechoso "
@@ -44,12 +44,14 @@ public class Estructura {
         ResultSet rs =sentencia.executeQuery(lineaSQL);
         while(rs.next()){
             int id=rs.getInt("id_sospechoso");
-            HashSet<String> correos=new HashSet<>();
-            HashSet<String> matriculas=new HashSet<>();
-            
-            String myname=rs.getString("nombre");
-            String mysurname=rs.getString("apellidos");
-            Sospechoso pre=new Sospechoso(myname, mysurname, lineaSQL, lineaSQL);
+            HashSet<Correo> correos = new HashSet<>();
+            HashSet<Direccion> direcciones = new HashSet<>();
+            HashSet<Telefono> telefonos = new HashSet<>();
+            HashSet<Sospechoso> sospecho = new HashSet<>();
+            HashSet<Matricula> matriculas = new HashSet<>();
+            HashSet<Antecedentes> antecedentes = new HashSet<>();
+            HashSet<Hechos> hechos = new HashSet<>();
+            HashSet<Foto> fotos = new HashSet<>();
             
         
             rs.next();
@@ -57,14 +59,19 @@ public class Estructura {
             do{
                 if(rs.getInt("id_sospechoso")!=id){
                     rs.previous();
-                    Sospechoso nuevo=new Sospechoso(rs.getString("nombre"),
-                        rs.getString("apellido1"), rs.getString("apellido2"), rs.getString("dni"),
-                        new ArrayList<>(correos), new ArrayList<>(matriculas), null, null, null, null, null, null);
+                    Sospechoso nuevo=new Sospechoso(rs.getString("nombre"),rs.getString("apellidos") ,
+                    new ArrayList<>(correos),new ArrayList<>(direcciones),new ArrayList<>(telefonos),
+                    new ArrayList<>(sospecho),new ArrayList<>(matriculas),new ArrayList<>(antecedentes),
+                    new ArrayList<>(hechos),new ArrayList<>(fotos));
 
                 }else{
                     //hay que recorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
-                    correos.add(rs.getString("correo"));
-                    matriculas.add(rs.getString("matriculas"));
+                    correos.add(new Correo(rs.getString("email")));
+                    direcciones.add(new Direccion(rs.getString("direccion")));
+                    telefonos.add(new Telefono(rs.getInt("telefono"),rs.getString("tipo")));
+                    matriculas.add(new Matricula(rs.getString("matricula")));
+                    antecedentes.add(new Antecedentes(rs.getString("antecedentes")));
+                    hechos.add(new Hechos(rs.getString("hechos")));
                 }
             }while(rs.next());
 

@@ -11,15 +11,15 @@ package Modelo;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class Telefono {
-        String Telefono;
+        int Telefono;
         String Tipo;
         
-        public Telefono(String Telefono, String Tipo){
+        public Telefono(int Telefono, String Tipo){
 		this.Telefono=Telefono;
 		this.Tipo=Tipo;
 	}
 
-        public String getTelefono(){
+        public int getTelefono(){
 		return this.Telefono;
 
 	}
@@ -27,7 +27,7 @@ public class Telefono {
 		return this.Tipo;
 
 	}
-        public void setTelefono(String Telefono){
+        public void setTelefono(int Telefono){
 		this.Telefono=Telefono;
 
 	}
