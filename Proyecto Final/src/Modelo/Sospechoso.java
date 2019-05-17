@@ -6,22 +6,40 @@
 
 package Modelo;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class Sospechoso {
     private String nombre;
-    private String primerApellido;
-    private String segundoApellido;
-    private String dni;
+    private String apellidos;
+    private List<Correo> correos;
+    private List<Direccion> direcciones;
+    private List<Telefono> telefonos;
+    private List<Sospechoso> acompañantes;
+    private List<Matricula> matriculas;
+    private List<Antecedentes> antecedentes;
+    private List<Hechos> hechos;
+    private List<Foto> fotos;
     
-    public Sospechoso(String nombre, String primerApellido, String segundoApellido,
-            String dni){
+    
+    
+    public Sospechoso(String nombre, String apellidos ){
+        this.correos = new ArrayList<>();
+        this.direcciones = new ArrayList<>();
+        this.telefonos = new ArrayList<>();
+        this.acompañantes = new ArrayList<>();
+        this.matriculas = new ArrayList<>();
+        this.antecedentes = new ArrayList<>();
+        this.hechos = new ArrayList<>();
+        this.fotos = new ArrayList<>();
         this.nombre = nombre;
-        this.primerApellido = primerApellido;
-        this.segundoApellido = segundoApellido;
-        this.dni = dni;
+        this.apellidos = apellidos;
+        
     }
 
     /**
@@ -39,46 +57,129 @@ public class Sospechoso {
     }
 
     /**
-     * @return the primerApellido
+     * @return the apellidos
      */
-    public String getPrimerApellido() {
-        return primerApellido;
+    public String getApellidos() {
+        return apellidos;
     }
 
     /**
-     * @param primerApellido the primerApellido to set
+     * @param apellidos the apellidos to set
      */
-    public void setPrimerApellido(String apellido) {
-        this.primerApellido = apellido;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     /**
-     * @return the segundoApellido
+     * @return the correos
      */
-    public String getSegundoApellido() {
-        return segundoApellido;
+    public List<Correo> getCorreos() {
+        return correos;
     }
 
     /**
-     * @param segundoApellido the segundoApellido to set
+     * @param correos the correos to set
      */
-    public void setSegundoApellido(String apellido) {
-        this.segundoApellido = apellido;
+    public void setCorreos(List<Correo> correos) {
+        this.correos = correos;
     }
 
     /**
-     * @return the dni
+     * @return the direcciones
      */
-    public String getDni() {
-        return dni;
+    public List<Direccion> getDirecciones() {
+        return direcciones;
     }
 
     /**
-     * @param dni the dni to set
+     * @param direcciones the direcciones to set
      */
-    public void setDni(String dni) {
-        this.dni = dni;
+    public void setDirecciones(List<Direccion> direcciones) {
+        this.direcciones = direcciones;
     }
-    
+
+    /**
+     * @return the telefonos
+     */
+    public List<Telefono> getTelefonos() {
+        return telefonos;
+    }
+
+    /**
+     * @param telefonos the telefonos to set
+     */
+    public void setTelefonos(List<Telefono> telefonos) {
+        this.telefonos = telefonos;
+    }
+
+    /**
+     * @return the acompañantes
+     */
+    public List<Sospechoso> getAcompañantes() {
+        return acompañantes;
+    }
+
+    /**
+     * @param acompañantes the acompañantes to set
+     */
+    public void setAcompañantes(List<Sospechoso> acompañantes) {
+        this.acompañantes = acompañantes;
+    }
+
+    /**
+     * @return the matriculas
+     */
+    public List<Matricula> getMatriculas() {
+        return matriculas;
+    }
+
+    /**
+     * @param matriculas the matriculas to set
+     */
+    public void setMatriculas(List<Matricula> matriculas) {
+        this.matriculas = matriculas;
+    }
+
+    /**
+     * @return the antecedentes
+     */
+    public List<Antecedentes> getAntecedentes() {
+        return antecedentes;
+    }
+
+    /**
+     * @param antecedentes the antecedentes to set
+     */
+    public void setAntecedentes(List<Antecedentes> antecedentes) {
+        this.antecedentes = antecedentes;
+    }
+
+    /**
+     * @return the hechos
+     */
+    public List<Hechos> getHechos() {
+        return hechos;
+    }
+
+    /**
+     * @param hechos the hechos to set
+     */
+    public void setHechos(List<Hechos> hechos) {
+        this.hechos = hechos;
+    }
+
+    /**
+     * @return the fotos
+     */
+    public List<Foto> getFotos() {
+        return fotos;
+    }
+
+    /**
+     * @param fotos the fotos to set
+     */
+    public void setFotos(List<Foto> fotos) {
+        this.fotos = fotos;
+    }
     
 }

@@ -10,10 +10,10 @@ package Modelo;
  * 
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class Domicilio {
+public class Direccion {
     private String domicilio;
     
-    public Domicilio(String d){
+    public Direccion(String d){
         this.domicilio=d;
     }
     
