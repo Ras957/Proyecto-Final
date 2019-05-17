@@ -63,7 +63,8 @@ public class Estructura {
                     new ArrayList<>(correos),new ArrayList<>(direcciones),new ArrayList<>(telefonos),
                     new ArrayList<>(sospecho),new ArrayList<>(matriculas),new ArrayList<>(antecedentes),
                     new ArrayList<>(hechos),new ArrayList<>(fotos));
-
+                    
+                    sospechosos.add(nuevo);
                 }else{
                     //hay que recorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
                     correos.add(new Correo(rs.getString("email")));
@@ -76,7 +77,6 @@ public class Estructura {
             }while(rs.next());
 
 
-            sospechosos.add(nuevo);
 
         }
         return sospechosos;
