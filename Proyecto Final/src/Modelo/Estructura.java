@@ -25,13 +25,13 @@ public class Estructura {
 
         lineaSQL = "Select sos.nombre, sos.apellidos, te.telefono, co.email, di.direccion, he.descripcion, an.descripcion, ve.matricula"
                 + "  from sospechoso sos, telefono te, correos co, direccion di, hechos he, antecedentes an, vehiculo ve, acompanya aco"
-                + "   where sos.Id=ve.id_Sospechoso"
-                + "   and sos.Id=te.id_Sospechoso "
-                + "   and sos.Id=co.id_Sospechoso"
-                + "   and sos.id=di.id_Sospechoso"
-                + "   and sos.id=he.id_Sospechoso"
-                + "   and sos.id=an.id_Sospechoso"
-                + "   and sos.id=aco.id_Sospechoso1;";
+                + "  where sos.Id=ve.id_Sospechoso"
+                + "  and sos.Id=te.id_Sospechoso "
+                + "  and sos.Id=co.id_Sospechoso"
+                + "  and sos.id=di.id_Sospechoso"
+                + "  and sos.id=he.id_Sospechoso"
+                + "  and sos.id=an.id_Sospechoso"
+                + "  and sos.id=aco.id_Sospechoso1;";
 
         //conectamos la sentencia a la base de datos
         sentencia = myConexion.getConexion().createStatement();
@@ -52,11 +52,11 @@ public class Estructura {
 
         lineaSQL = "Select sos.nombre, sos.apellidos, te.numero, co.email, di.descripcion, he.descripcion, an.descripcion, ve.matricula"
                 + "  from sospechoso sos, telefono te, correos co, direccion di, hechos he, antecedentes an, vehiculo ve"
-                + "   where (Select te.numero from telefono te, sospechoso sos where ?=te.id_Sospechoso)=te.numero"
-                + "   or (Select co.email from correos co, sospechoso sos where ?=co.id_Sospechoso)=co.email "
-                + "   or (Select di.descripcion from direccion di, sospechoso sos where ?=di.id_Sospechoso)=di.descripcion"
-                + "   or (Select ve.matricula from vehiculo ve, sospechoso sos where ?=ve.id_Sospechoso)=ve.matricula"
-                + "   or ?=aco.Id_Sospechoso2;";
+                + "  where (Select te.numero from telefono te, sospechoso sos where ?=te.id_Sospechoso)=te.numero"
+                + "  or (Select co.email from correos co, sospechoso sos where ?=co.id_Sospechoso)=co.email "
+                + "  or (Select di.descripcion from direccion di, sospechoso sos where ?=di.id_Sospechoso)=di.descripcion"
+                + "  or (Select ve.matricula from vehiculo ve, sospechoso sos where ?=ve.id_Sospechoso)=ve.matricula"
+                + "  or ?=aco.Id_Sospechoso2;";
 
         //conectamos la sentencia a la base de datos
         sentencia = myConexion.getConexion().createStatement();
