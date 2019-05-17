@@ -31,7 +31,32 @@ public class Estructura {
                 + "   and sos.id=di.id_Sospechoso"
                 + "   and sos.id=he.id_Sospechoso"
                 + "   and sos.id=an.id_Sospechoso"
-                + "   and sos.id=aco.id_Sospechoso1";
+                + "   and sos.id=aco.id_Sospechoso1;";
+
+        //conectamos la sentencia a la base de datos
+        sentencia = myConexion.getConexion().createStatement();
+        //ejecutamos la sentencia;
+        sentencia.executeUpdate(lineaSQL);
+
+        //HAY QUE REPETIR ESTA OPERACIÓN PARA CADA UNA DE LAS TABLAS
+        return devuelve;
+
+    }
+    
+    public static String buscarSospechosos() throws SQLException {
+        String devuelve = null;
+        //Cadena donde irán las sentencias sql de creación de tablas
+        String lineaSQL;
+        //Objeto de tipo Statement
+        Statement sentencia;
+
+        lineaSQL = "Select sos.nombre, sos.apellidos, te.numero, co.email, di.descripcion, he.descripcion, an.descripcion, ve.matricula"
+                + "  from sospechoso sos, telefono te, correos co, direccion di, hechos he, antecedentes an, vehiculo ve"
+                + "   where (Select te.numero from telefono te, sospechoso sos where \"idSospechoso\"=te.id_Sospechoso)=te.numero"
+                + "   or (Select co.email from correos co, sospechoso sos where \"idSospechoso\"=co.id_Sospechoso)=co.email "
+                + "   or (Select di.descripcion from direccion di, sospechoso sos where \"idSospechoso\"=di.id_Sospechoso)=di.descripcion"
+                + "   or (Select ve.matricula from vehiculo ve, sospechoso sos where \"idSospechoso\"=ve.id_Sospechoso)=ve.matricula"
+                + "   or\"idSospechoso\"=aco.Id_Sospechoso2;";
 
         //conectamos la sentencia a la base de datos
         sentencia = myConexion.getConexion().createStatement();
