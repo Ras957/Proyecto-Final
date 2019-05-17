@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,7 +21,7 @@ public class Estructura {
 
     private static Conexion myConexion;
 
-    public static ArrayList<Sospechoso> listarSospechosos() throws SQLException {
+    public static ArrayList<Sospechoso> listarSospechosos() throws SQLException, IOException {
         ArrayList<Sospechoso> sospechosos = new ArrayList<>();
        
         String lineaSQL;
@@ -44,7 +46,12 @@ public class Estructura {
             int id=rs.getInt("id_sospechoso");
             HashSet<String> correos=new HashSet<>();
             HashSet<String> matriculas=new HashSet<>();
-
+            
+            String myname=rs.getString("nombre");
+            String mysurname=rs.getString("apellidos");
+            Sospechoso pre=new Sospechoso(myname, mysurname, lineaSQL, lineaSQL);
+            
+        
             rs.next();
 
             do{
