@@ -28,15 +28,17 @@ public class Sospechoso {
     
     
     
-    public Sospechoso(String nombre, String apellidos ){
-        this.correos = new ArrayList<>();
-        this.direcciones = new ArrayList<>();
-        this.telefonos = new ArrayList<>();
-        this.acompañantes = new ArrayList<>();
-        this.matriculas = new ArrayList<>();
-        this.antecedentes = new ArrayList<>();
-        this.hechos = new ArrayList<>();
-        this.fotos = new ArrayList<>();
+    public Sospechoso(String nombre, String apellidos, List<Correo> correos, List<Direccion> direcciones, 
+            List<Telefono> telefonos, List<Sospechoso> acompañantes, List<Matricula> matriculas, 
+            List<Antecedentes> antecedentes, List<Hechos> hechos, List<Foto> fotos){
+        this.correos = correos;
+        this.direcciones = direcciones;
+        this.telefonos = telefonos;
+        this.acompañantes = acompañantes;
+        this.matriculas = matriculas;
+        this.antecedentes = antecedentes;
+        this.hechos = hechos;
+        this.fotos = fotos;
         this.nombre = nombre;
         this.apellidos = apellidos;
         
