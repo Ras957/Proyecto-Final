@@ -5,8 +5,8 @@
  */
 package Modelo;
 
-import java.io.BufferedReader;
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -83,13 +83,14 @@ public class Estructura {
 
     }
     
-    public static String buscarSospechosos() throws SQLException {
-        String devuelve = null;
+    public static ArrayList<Sospechoso> buscarSospechosos(Sospechoso sos) throws SQLException {
+        ArrayList<Sospechoso> sospechosos = new ArrayList<>();
        
         String lineaSQL;
         
         Statement sentencia;
-
+        
+        //Usa el id del sospechoso introducido para buscar coincidencias.
         lineaSQL = "Select sos.nombre, sos.apellidos, te.numero, co.email, di.descripcion, he.descripcion, an.descripcion, ve.matricula"
                 + "  from sospechoso sos, telefono te, correos co, direccion di, hechos he, antecedentes an, vehiculo ve"
                 + "  where (Select te.numero from telefono te, sospechoso sos where ?=te.id_Sospechoso)=te.numero"
@@ -98,14 +99,58 @@ public class Estructura {
                 + "  or (Select ve.matricula from vehiculo ve, sospechoso sos where ?=ve.id_Sospechoso)=ve.matricula"
                 + "  or ?=aco.Id_Sospechoso2;";
 
-
+        
+        PreparedStatement preparedStmt = myConexion.getConexion().prepareStatement(lineaSQL);
+        
         sentencia = myConexion.getConexion().createStatement();
-   
-        sentencia.executeUpdate(lineaSQL);
+       
+			 preparedStmt.setInt(1, sos.getCodigo());
+			 preparedStmt.setInt(2, sos.getCodigo());
+			 preparedStmt.setInt(3, sos.getCodigo());
+			 preparedStmt.setInt(4, sos.getCodigo());
+			 preparedStmt.setInt(5, sos.getCodigo());
+                           
+                         preparedStmt.execute();
+        
+        ResultSet rs =sentencia.executeQuery(lineaSQL);
+        while(rs.next()){
+            int id=rs.getInt("id_sospechoso");
+            HashSet<Correo> correos = new HashSet<>();
+            HashSet<Direccion> direcciones = new HashSet<>();
+            HashSet<Telefono> telefonos = new HashSet<>();
+            HashSet<Sospechoso> sospecho = new HashSet<>();
+            HashSet<Matricula> matriculas = new HashSet<>();
+            HashSet<Antecedentes> antecedentes = new HashSet<>();
+            HashSet<Hechos> hechos = new HashSet<>();
+            HashSet<Foto> fotos = new HashSet<>();
+            
+        
+            rs.next();
+
+            do{
+                if(rs.getInt("id_sospechoso")!=id){
+                    rs.previous();
+                    Sospechoso nuevo=new Sospechoso(rs.getString("nombre"),rs.getString("apellidos") ,
+                    new ArrayList<>(correos),new ArrayList<>(direcciones),new ArrayList<>(telefonos),
+                    new ArrayList<>(sospecho),new ArrayList<>(matriculas),new ArrayList<>(antecedentes),
+                    new ArrayList<>(hechos),new ArrayList<>(fotos));
+                    
+                    sospechosos.add(nuevo);
+                }else{
+                    //hay que recorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
+                    correos.add(new Correo(rs.getString("email")));
+                    direcciones.add(new Direccion(rs.getString("direccion")));
+                    telefonos.add(new Telefono(rs.getInt("telefono"),rs.getString("tipo")));
+                    matriculas.add(new Matricula(rs.getString("matricula")));
+                    antecedentes.add(new Antecedentes(rs.getString("antecedentes")));
+                    hechos.add(new Hechos(rs.getString("hechos")));
+                }
+            }while(rs.next());
 
         
-        return devuelve;
-
+        
+        }
+        return sospechosos;
     }
 
     public static boolean generarEstructura() {

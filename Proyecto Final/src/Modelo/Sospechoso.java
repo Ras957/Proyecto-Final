@@ -15,6 +15,7 @@ import java.util.List;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class Sospechoso {
+    private int codigo;
     private String nombre;
     private String apellidos;
     private List<Correo> correos;
@@ -44,6 +45,15 @@ public class Sospechoso {
         
     }
 
+    
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+    
     /**
      * @return the nombre
      */
