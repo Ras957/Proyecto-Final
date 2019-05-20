@@ -28,7 +28,7 @@ public class Estructura {
         
         Statement sentencia;
 
-        lineaSQL = "Select sos.nombre, sos.apellidos, te.telefono, te.tipo, co.email, di.direccion, he.descripcion hechos, an.descripcion antecedentes, ve.matricula"
+        lineaSQL = "Select sos.id_sospechoso, sos.nombre, sos.apellidos, te.telefono, te.tipo, co.email, di.direccion, he.descripcion hechos, an.descripcion antecedentes, ve.matricula"
                 + "  from sospechoso sos, telefono te, correos co, direccion di, hechos he, antecedentes an, vehiculo ve, acompanya aco"
                 + "  where sos.Id=ve.id_Sospechoso"
                 + "  and sos.Id=te.id_Sospechoso "
@@ -63,10 +63,11 @@ public class Estructura {
                     new ArrayList<>(correos),new ArrayList<>(direcciones),new ArrayList<>(telefonos),
                     new ArrayList<>(sospecho),new ArrayList<>(matriculas),new ArrayList<>(antecedentes),
                     new ArrayList<>(hechos),new ArrayList<>(fotos));
-                    
+                    nuevo.setCodigo(id);
                     sospechosos.add(nuevo);
                 }else{
                     //hay que recorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
+                    
                     correos.add(new Correo(rs.getString("email")));
                     direcciones.add(new Direccion(rs.getString("direccion")));
                     telefonos.add(new Telefono(rs.getInt("telefono"),rs.getString("tipo")));
@@ -134,7 +135,7 @@ public class Estructura {
                     new ArrayList<>(correos),new ArrayList<>(direcciones),new ArrayList<>(telefonos),
                     new ArrayList<>(sospecho),new ArrayList<>(matriculas),new ArrayList<>(antecedentes),
                     new ArrayList<>(hechos),new ArrayList<>(fotos));
-                    
+                    nuevo.setCodigo(id);
                     sospechosos.add(nuevo);
                 }else{
                     //hay que recorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
