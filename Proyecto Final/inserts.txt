@@ -5,5 +5,5 @@ intert into direccion(direccion,id_Sospechoso) values(direccion,id);
 insert into telefono(telefono,id_Sospechoso) values(telefono,id);
 insert into antecedentes(descripcion, id_Sospechoso) values(descripcion,id);
 insert into hechos(descripcion,id_Sospechoso) values(descripcion,id);
-insert into fotos(descripcion);
+insert into fotos(imagen, id_sospechoso) values (imagen, id);
 

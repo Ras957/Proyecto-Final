@@ -250,4 +250,188 @@ public class Estructura {
         }
         return generada;
     }
+    
+    public boolean insertarSospechoso(String nombre, String apellidos) throws SQLException{
+        boolean devuelve=false;
+                
+        String lineaSQL;
+        
+        Statement sentencia;
+
+        lineaSQL = "insert into sospechoso(nombre,apellidos) values(?,?);";
+
+        
+        PreparedStatement preparedStmt = myConexion.getConexion().prepareStatement(lineaSQL);
+        
+        sentencia = myConexion.getConexion().createStatement();
+       
+			 preparedStmt.setString(1, nombre);
+			 preparedStmt.setString(2, apellidos);
+			 
+                           
+                         preparedStmt.execute();
+                         devuelve=true;
+        return devuelve;        
+    }
+    
+    public boolean insertarVehiculo(int matricula, int id) throws SQLException{
+        boolean devuelve;
+                
+        String lineaSQL;
+        
+        Statement sentencia;
+
+        lineaSQL = "insert into vehiculo (matricula,id_Sospechoso) values(?,?);";
+
+        
+        PreparedStatement preparedStmt = myConexion.getConexion().prepareStatement(lineaSQL);
+        
+        sentencia = myConexion.getConexion().createStatement();
+       
+			 preparedStmt.setInt(1, matricula);
+			 preparedStmt.setInt(2, id);
+			 
+                           
+                         preparedStmt.execute();
+                         devuelve=true;
+        return devuelve;        
+    }
+    
+    public boolean insertarCorreo(String email, int id) throws SQLException{
+        boolean devuelve;
+                
+        String lineaSQL;
+        
+        Statement sentencia;
+
+        lineaSQL = "intert into correo(email,id_Sospechoso) values (?,?);";
+
+        
+        PreparedStatement preparedStmt = myConexion.getConexion().prepareStatement(lineaSQL);
+        
+        sentencia = myConexion.getConexion().createStatement();
+       
+			 preparedStmt.setString(1, email);
+			 preparedStmt.setInt(2, id);
+			 
+                           
+                         preparedStmt.execute();
+                         devuelve=true;
+        return devuelve;        
+    }
+    
+    public boolean insertarDireccion(String direccion, int id) throws SQLException{
+        boolean devuelve;
+                
+        String lineaSQL;
+        
+        Statement sentencia;
+
+        lineaSQL = "intert into direccion(direccion,id_Sospechoso) values(?,?);";
+
+        
+        PreparedStatement preparedStmt = myConexion.getConexion().prepareStatement(lineaSQL);
+        
+        sentencia = myConexion.getConexion().createStatement();
+       
+			 preparedStmt.setString(1, direccion);
+			 preparedStmt.setInt(2, id);
+			 
+                           
+                         preparedStmt.execute();
+                         devuelve=true;
+        return devuelve;        
+    }
+    
+    public boolean insertarTelefono(int telefono, int id) throws SQLException{
+        boolean devuelve;
+                
+        String lineaSQL;
+        
+        Statement sentencia;
+
+        lineaSQL = "insert into telefono(telefono,id_Sospechoso) values(?,?);";
+
+        
+        PreparedStatement preparedStmt = myConexion.getConexion().prepareStatement(lineaSQL);
+        
+        sentencia = myConexion.getConexion().createStatement();
+       
+			 preparedStmt.setInt(1, telefono);
+			 preparedStmt.setInt(2, id);
+			 
+                           
+                         preparedStmt.execute();
+                         devuelve=true;
+        return devuelve;        
+    }
+    
+    public boolean insertarAntecedentes(String desc, int id) throws SQLException{
+        boolean devuelve;
+                
+        String lineaSQL;
+        
+        Statement sentencia;
+
+        lineaSQL = "insert into antecedentes(descripcion, id_Sospechoso) values(?,?);";
+
+        
+        PreparedStatement preparedStmt = myConexion.getConexion().prepareStatement(lineaSQL);
+        
+        sentencia = myConexion.getConexion().createStatement();
+       
+			 preparedStmt.setString(1, desc);
+			 preparedStmt.setInt(2, id);
+			 
+                           
+                         preparedStmt.execute();
+                         devuelve=true;
+        return devuelve;        
+    }
+    
+    public boolean insertarHechos(String desc, int id) throws SQLException{
+        boolean devuelve;
+                
+        String lineaSQL;
+        
+        Statement sentencia;
+
+        lineaSQL = "insert into hechos(descripcion,id_Sospechoso) values(?,?);";
+
+        
+        PreparedStatement preparedStmt = myConexion.getConexion().prepareStatement(lineaSQL);
+        
+        sentencia = myConexion.getConexion().createStatement();
+       
+			 preparedStmt.setString(1, desc);
+			 preparedStmt.setInt(2, id);
+			 
+                           
+                         preparedStmt.execute();
+                         devuelve=true;
+        return devuelve;        
+    }
+    
+    public boolean insertarFotos(String imagen, int id) throws SQLException{
+        boolean devuelve;
+                
+        String lineaSQL;
+        
+        Statement sentencia;
+
+        lineaSQL = "insert into fotos(imagen, id_sospechoso) values (?, ?);";
+
+        
+        PreparedStatement preparedStmt = myConexion.getConexion().prepareStatement(lineaSQL);
+        
+        sentencia = myConexion.getConexion().createStatement();
+       
+			 preparedStmt.setString(1, imagen);
+			 preparedStmt.setInt(2, id);
+			 
+                           
+                         preparedStmt.execute();
+                         devuelve=true;
+        return devuelve;        
+    }
 }
