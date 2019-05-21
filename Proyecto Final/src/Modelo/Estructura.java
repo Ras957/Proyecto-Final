@@ -5,7 +5,6 @@
  */
 package Modelo;
 
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
