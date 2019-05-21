@@ -132,17 +132,17 @@ public class Sospechoso {
     }
 
     /**
-     * @return the acompañantes
+     * @return the acompanyantes
      */
-    public List<Sospechoso> getAcompañantes() {
+    public List<Sospechoso> getAcompanyantes() {
         return acompanyantes;
     }
 
     /**
-     * @param acompañantes the acompañantes to set
+     * @param acompanyantes the acompanyantes to set
      */
-    public void setAcompañantes(List<Sospechoso> acompañantes) {
-        this.acompanyantes = acompañantes;
+    public void setAcompanyantes(List<Sospechoso> acompanyantes) {
+        this.acompanyantes = acompanyantes;
     }
 
     /**
