@@ -74,15 +74,15 @@ public class Conexion {
 	{
 		try
 		{
-		Class.forName("com.mysql.cj.jdbc.Driver");
+		Class.forName("com.mysql.jdbc.Driver");
          // Setup the connection with the DB
          
 		//conexion nomral
 		
-		//miConexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bbdd+"?user="+this.login+"&password="+this.password);
+		miConexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bbdd+"?user="+this.login+"&password="+this.password);
 		
 		//conexión completa para evitar errores de sincronizacion con el servidor
-		miConexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bbdd+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&user= "+this.login+"&password=S"+this.password);
+		//miConexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bbdd+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&user= "+this.login+"&password=S"+this.password);
 		//miConexion = DriverManager.getConnection("jdbc:mysql://localhost/policia", "root", "");
         
 		this.estado=true;
