@@ -31,6 +31,14 @@ public class Conexion {
     private String password; //Password
     private boolean estado = false;//Estado de la conexión
 
+    public Conexion(String host, String bbdd, String login, String password) 
+	{
+		this.host=host;
+		this.bbdd=bbdd;
+		this.login=login;
+		this.password=password;		
+	}
+    
     public Conexion() throws ParserConfigurationException, SAXException, IOException {
         File file=new File("bbdd.xml");
         DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance()
@@ -66,7 +74,7 @@ public class Conexion {
 	{
 		try
 		{
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
          // Setup the connection with the DB
          
 		//conexion nomral
@@ -74,7 +82,7 @@ public class Conexion {
 		//miConexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bbdd+"?user="+this.login+"&password="+this.password);
 		
 		//conexión completa para evitar errores de sincronizacion con el servidor
-		miConexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bbdd+", "+this.login+", "+this.password);
+		miConexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bbdd+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&user= "+this.login+"&password=S"+this.password);
 		
         
 		this.estado=true;

@@ -29,16 +29,16 @@ import org.xml.sax.SAXException;
 public class GUI extends javax.swing.JFrame {
     public static DefaultTableModel modelo1=new DefaultTableModel();
     public ArrayList<String[]> myTableModel = new ArrayList();
-    private Conexion newcon;
+    private static Conexion newcon;
 
     /**
      * Creates new form GUI
      */
     public GUI() throws ParserConfigurationException, SAXException, IOException, Exception {
-        this.newcon = new Conexion();
         initComponents();
+        newcon = new Conexion();
         modelo1=(DefaultTableModel)jTable1.getModel();
-        //newcon.conectar();
+        newcon.conectar();
         //Estructura.generarEstructura();
     }
 

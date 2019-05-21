@@ -276,8 +276,8 @@ public class Estructura {
                     + " (Id                int(9) AUTO_INCREMENT,"
                     + " nombre             varchar(20),"
                     + " primerApellido     varchar(20),"
-                    + " segundoApellido     varchar(20),PRIMARY KEY(Id))"
-                    + " PRIMARY KEY(Id)";
+                    + " segundoApellido     varchar(20),"
+                    + " PRIMARY KEY(Id))";
 
             sentencia = myConexion.getConexion().createStatement();
             sentencia.executeUpdate(lineaSQL);
