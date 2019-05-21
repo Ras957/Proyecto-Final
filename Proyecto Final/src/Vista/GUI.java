@@ -49,17 +49,20 @@ public class GUI extends javax.swing.JFrame {
 
     }
 
-    public void ArrayToTable(Sospechoso[][] data) {
+    public void ArrayToTable(ArrayList<Sospechoso> data) {
 
         DefaultTableModel model = new DefaultTableModel();
-
-        for (int i = 0; i < data.length; i++) {
-            Sospechoso[] linea = new Sospechoso[data[i].length];
-            for (int j = 0; j < data[i].length; j++) {
-                linea[j] = data[i][j];
-            }
+        /*for (int i = 0; i < data.length; i++) {
+            Sospechoso[] linea = new Sospechoso[data.length];
+            
             model.addRow(linea);
+        }*/
+        Object rowData[]= new Object[1];
+        for (int i = 0; i < data.size(); i++) {
+            rowData[i] = data.get(i);
+            model.addRow(rowData);
         }
+        
 
     }
 
