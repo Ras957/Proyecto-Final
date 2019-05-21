@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  *
@@ -24,11 +27,8 @@ public class Estructura {
     public static ArrayList<Sospechoso> listarSospechosos() throws SQLException, IOException {
         ArrayList<Sospechoso> sospechosos = new ArrayList<>();
        
-        String lineaSQL;
-        
-        Statement sentencia;
 
-        lineaSQL = "Select sos.id_sospechoso, sos.nombre, sos.apellidos, te.telefono, te.tipo, co.email, di.direccion, he.descripcion hechos, an.descripcion antecedentes, ve.matricula"
+        String lineaSQL = "Select sos.id_sospechoso, sos.nombre, sos.apellidos, te.telefono, te.tipo, co.email, di.direccion, he.descripcion hechos, an.descripcion antecedentes, ve.matricula, aco.id_Sospechoso2"
                 + "  from sospechoso sos, telefono te, correos co, direccion di, hechos he, antecedentes an, vehiculo ve, acompanya aco"
                 + "  where sos.Id=ve.id_Sospechoso"
                 + "  and sos.Id=te.id_Sospechoso "
@@ -39,47 +39,71 @@ public class Estructura {
                 + "  and sos.id=aco.id_Sospechoso1;";
 
         
-        sentencia = myConexion.getConexion().createStatement();
+        PreparedStatement conexion = myConexion.getConexion().prepareStatement(lineaSQL);
         
-        ResultSet rs =sentencia.executeQuery(lineaSQL);
-        while(rs.next()){
-            int id=rs.getInt("id_sospechoso");
-            HashSet<Correo> correos = new HashSet<>();
-            HashSet<Direccion> direcciones = new HashSet<>();
-            HashSet<Telefono> telefonos = new HashSet<>();
-            HashSet<Sospechoso> sospecho = new HashSet<>();
-            HashSet<Matricula> matriculas = new HashSet<>();
-            HashSet<Antecedentes> antecedentes = new HashSet<>();
-            HashSet<Hechos> hechos = new HashSet<>();
-            HashSet<Foto> fotos = new HashSet<>();
+        ResultSet rs = conexion.executeQuery();
+        
+        /*ITERAMOS UNA VEZ*/
+        HashSet<Correo> correos=new HashSet<>();
+        HashSet<Direccion> direcciones=new HashSet<>();
+        HashSet<Telefono> telefonos=new HashSet<>();
+        HashSet<Sospechoso> acompanyantes=new HashSet<>();
+        HashSet<Matricula> matriculas=new HashSet<>();
+        HashSet<Antecedentes> antecedentes=new HashSet<>();
+        HashSet<Hechos> hechos=new HashSet<>();
+        HashSet<Foto> fotos=new HashSet<>();
+        
+        while (rs.next()) {
+            int id = rs.getInt("id");
             
-        
-            rs.next();
 
-            do{
-                if(rs.getInt("id_sospechoso")!=id){
+            do {
+               // System.out.println(rs.getInt("id"));
+
+                if (rs.getInt("id") != id) {
+                    System.out.println(rs.getInt("id") + "vs" + id);
                     rs.previous();
-                    Sospechoso nuevo=new Sospechoso(rs.getString("nombre"),rs.getString("apellidos") ,
-                    new ArrayList<>(correos),new ArrayList<>(direcciones),new ArrayList<>(telefonos),
-                    new ArrayList<>(sospecho),new ArrayList<>(matriculas),new ArrayList<>(antecedentes),
-                    new ArrayList<>(hechos),new ArrayList<>(fotos));
-                    nuevo.setCodigo(id);
+                    Sospechoso nuevo = new Sospechoso(rs.getInt("id"), rs.getString("Nombre"), rs.getString("Apellidos"),new ArrayList<> (correos), new ArrayList<> (direcciones), 
+                    new ArrayList<> (telefonos), new ArrayList<> (acompanyantes), new ArrayList<> (matriculas), 
+                    new ArrayList<> (antecedentes), new ArrayList<> (hechos), new ArrayList<> (fotos));
                     sospechosos.add(nuevo);
-                }else{
-                    //hay que recorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
+
+                    rs.next();
+                    id = rs.getInt("id");
+                    correos = new HashSet<>();
+                    direcciones=new HashSet<>();
+                    telefonos=new HashSet<>();
+                    acompanyantes=new HashSet<>();
+                    matriculas = new HashSet<>();
+                    antecedentes=new HashSet<>();
+                    hechos=new HashSet<>();
+                    fotos=new HashSet<>();
                     
+                    rs.previous();
+                } else {
+                    //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
                     correos.add(new Correo(rs.getString("email")));
-                    direcciones.add(new Direccion(rs.getString("direccion")));
-                    telefonos.add(new Telefono(rs.getInt("telefono"),rs.getString("tipo")));
-                    matriculas.add(new Matricula(rs.getString("matricula")));
+                    direcciones.add(new Direccion(rs.getString("Direccion")));
+                    telefonos.add(new Telefono(rs.getInt("Telefono")));
+                    acompanyantes.add(new Sospechoso(rs.getInt("id_Sospechoso2")));
+                    matriculas.add(new Matricula(rs.getString("Matricula")));
                     antecedentes.add(new Antecedentes(rs.getString("antecedentes")));
                     hechos.add(new Hechos(rs.getString("hechos")));
+                    fotos.add(new Foto(rs.getString("fotos")));
                 }
-            }while(rs.next());
+            } while (rs.next());
 
 
 
         }
+            //insert last one  //creo que va antes del return 
+            rs.previous();
+            Sospechoso nuevo = new Sospechoso(rs.getInt("id"),
+                    rs.getString("Nombre"),
+                    rs.getString("Apellidos"), new ArrayList<> (correos), new ArrayList<> (direcciones), 
+                    new ArrayList<> (telefonos), new ArrayList<> (acompanyantes), new ArrayList<> (matriculas), 
+                    new ArrayList<> (antecedentes), new ArrayList<> (hechos), new ArrayList<> (fotos));
+            sospechosos.add(nuevo);
         return sospechosos;
 
     }
@@ -131,7 +155,7 @@ public class Estructura {
             do{
                 if(rs.getInt("id_sospechoso")!=id){
                     rs.previous();
-                    Sospechoso nuevo=new Sospechoso(rs.getString("nombre"),rs.getString("apellidos") ,
+                    Sospechoso nuevo=new Sospechoso(rs.getInt("id"), rs.getString("nombre"),rs.getString("apellidos") ,
                     new ArrayList<>(correos),new ArrayList<>(direcciones),new ArrayList<>(telefonos),
                     new ArrayList<>(sospecho),new ArrayList<>(matriculas),new ArrayList<>(antecedentes),
                     new ArrayList<>(hechos),new ArrayList<>(fotos));
@@ -258,7 +282,7 @@ public class Estructura {
         
         Statement sentencia;
 
-        lineaSQL = "insert into sospechoso(nombre,apellidos) values(?,?);";
+        lineaSQL = "INSERT INTO sospechoso(nombre,apellidos) values(?,?);";
 
         
         PreparedStatement preparedStmt = myConexion.getConexion().prepareStatement(lineaSQL);

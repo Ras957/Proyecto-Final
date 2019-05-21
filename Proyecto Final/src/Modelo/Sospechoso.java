@@ -21,7 +21,7 @@ public class Sospechoso {
     private List<Correo> correos;
     private List<Direccion> direcciones;
     private List<Telefono> telefonos;
-    private List<Sospechoso> acompañantes;
+    private List<Sospechoso> acompanyantes;
     private List<Matricula> matriculas;
     private List<Antecedentes> antecedentes;
     private List<Hechos> hechos;
@@ -29,13 +29,20 @@ public class Sospechoso {
     
     
     
-    public Sospechoso(String nombre, String apellidos, List<Correo> correos, List<Direccion> direcciones, 
-            List<Telefono> telefonos, List<Sospechoso> acompañantes, List<Matricula> matriculas, 
+    public Sospechoso(int codigo){
+        this.codigo=codigo;
+       
+        
+    }
+    
+    public Sospechoso(int codigo,String nombre, String apellidos, List<Correo> correos, List<Direccion> direcciones, 
+            List<Telefono> telefonos, List<Sospechoso> acompanyantes, List<Matricula> matriculas, 
             List<Antecedentes> antecedentes, List<Hechos> hechos, List<Foto> fotos){
+        this.codigo=codigo;
         this.correos = correos;
         this.direcciones = direcciones;
         this.telefonos = telefonos;
-        this.acompañantes = acompañantes;
+        this.acompanyantes = acompanyantes;
         this.matriculas = matriculas;
         this.antecedentes = antecedentes;
         this.hechos = hechos;
@@ -128,14 +135,14 @@ public class Sospechoso {
      * @return the acompañantes
      */
     public List<Sospechoso> getAcompañantes() {
-        return acompañantes;
+        return acompanyantes;
     }
 
     /**
      * @param acompañantes the acompañantes to set
      */
     public void setAcompañantes(List<Sospechoso> acompañantes) {
-        this.acompañantes = acompañantes;
+        this.acompanyantes = acompañantes;
     }
 
     /**

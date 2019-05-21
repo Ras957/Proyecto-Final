@@ -14,6 +14,11 @@ public class Telefono {
         int Telefono;
         String Tipo;
         
+        public Telefono(int Telefono){
+		this.Telefono=Telefono;
+		this.Tipo="";
+	}
+        
         public Telefono(int Telefono, String Tipo){
 		this.Telefono=Telefono;
 		this.Tipo=Tipo;
