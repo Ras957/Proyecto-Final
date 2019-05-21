@@ -62,8 +62,6 @@ public class GUI extends javax.swing.JFrame {
             rowData[i] = data.get(i);
             model.addRow(rowData);
         }
-        
-
     }
 
     @Override
