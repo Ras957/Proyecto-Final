@@ -20,7 +20,7 @@ import org.xml.sax.SAXException;
 
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Sammy 
  */
 public class Conexion {
 
@@ -82,7 +82,7 @@ public class Conexion {
         @author Daniel
      * @return this.estado
      * @throws java.lang.Exception
-        @parameter ArrayList<Sospechoso> data
+        
         Metodo para conectar con la base de datos
     */
     public boolean conectar() throws Exception

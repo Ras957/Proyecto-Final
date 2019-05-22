@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * 
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Sammy 
  */
 public class Sospechoso {
     private int codigo;

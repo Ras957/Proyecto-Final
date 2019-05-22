@@ -610,7 +610,7 @@ public class Estructura {
      * @param id
      * @return devuelve
      * @throws java.sql.SQLException
-        @parameter String desc, int id
+        
         Inserta Antecedentes
     */
     public static boolean insertarAntecedentes(String desc, int id) throws SQLException{
@@ -642,7 +642,7 @@ public class Estructura {
      * @param id
      * @return devulve
      * @throws java.sql.SQLException
-        @parameter String desc, int id
+       
         Inserta Hechos
     */
     public static boolean insertarHechos(String desc, int id) throws SQLException{
@@ -673,7 +673,7 @@ public class Estructura {
      * @param imagen
      * @param id
      * @throws java.sql.SQLException
-        @parameter String imagen, int id
+       
         * @return devulve
         Inserta la foto
     */
@@ -729,7 +729,7 @@ public class Estructura {
         @author Samuel
      * @param codigo
      * @return nFilas
-        @parameter int codigo
+      
         Borra un sospechoso de la base de datos
     */
     public static int borrarSospechoso(int codigo){
@@ -770,7 +770,7 @@ public class Estructura {
      * @return devolver
      * @throws java.sql.SQLException
      * @throws java.io.IOException
-        @parameter int id
+      
         Busca Sospechosos por ID
     */
     public static Sospechoso buscarSospechosoId(int id) throws SQLException, IOException{

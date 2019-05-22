@@ -31,7 +31,7 @@ public class Store implements Serializable {
      * @param code
      * @param value
      * @return true
-        @parameter String code, String[] value
+        
         Añade un item a un HashMap de String,String[]
     */
     public boolean addItem(String code, String[] value) {
@@ -50,7 +50,7 @@ public class Store implements Serializable {
         @author Daniel
      * @param code
      * @return false
-        @parameter String code
+        
         Borrar el objeto que se le pasa por referencia del HashMap
     */
     public boolean removeItem(String code) {
@@ -71,7 +71,7 @@ public class Store implements Serializable {
         @author Daniel
      * @param code
      * @return a
-        @parameter String code 
+        
         Buscar un objeto de la lista de objetos que con valor especifico
     */
     public boolean findItem(String code) {

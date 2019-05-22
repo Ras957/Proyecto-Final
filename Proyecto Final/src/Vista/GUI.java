@@ -24,7 +24,7 @@ import org.xml.sax.SAXException;
 
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Sammy 
  */
 public class GUI extends javax.swing.JFrame {
     public static DefaultTableModel modelo1=new DefaultTableModel();
@@ -33,6 +33,9 @@ public class GUI extends javax.swing.JFrame {
 
     /**
      * Creates new form GUI
+     * @throws javax.xml.parsers.ParserConfigurationException
+     * @throws org.xml.sax.SAXException
+     * @throws java.io.IOException
      */
     public GUI() throws ParserConfigurationException, SAXException, IOException, Exception {
         initComponents();

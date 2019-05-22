@@ -8,7 +8,7 @@ package Modelo;
 
 /**
  * 
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Sammy 
  */
 public class Direccion {
     private String domicilio;
