@@ -23,14 +23,17 @@ insert into acompanya values (1,2);
 
 ALTER TABLE  `Vehiculo`  AUTO_INCREMENT =1;
 insert into Vehiculo (Matricula,id_Sospechoso)  values ( '0004-NAH',	1 );
+insert into Vehiculo (Matricula,id_Sospechoso)  values ( '1568-COR',	2 );
 
 
 ALTER TABLE  `Telefono` AUTO_INCREMENT =1;
 insert into Telefono (Telefono,Tipo,id_Sospechoso)  values ( 682404274,   'Movil',    1 );
+insert into Telefono (Telefono,Tipo,id_Sospechoso)  values ( 695341454,   'Movil',    2 );
 
 
 ALTER TABLE  `Antecedentes` AUTO_INCREMENT =1;
 insert into Antecedentes (Descripcion,id_Sospechoso)  values ( 'Este tio es mu malo',	1 );
+insert into Antecedentes (Descripcion,id_Sospechoso)  values ( 'Este tio es tambien muy malo mu malo',	2 );
 
 ALTER TABLE  `Correos` AUTO_INCREMENT =1;
 insert into Correos (email,id_Sospechoso)  values ( 'ejemplo@gmail.com',	1 );
