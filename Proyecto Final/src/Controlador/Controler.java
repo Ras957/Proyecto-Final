@@ -27,7 +27,11 @@ public class Controler {
     
     
     
-    
+    /**
+        @author Daniel
+        @parameter ArrayList<Sospechoso> data
+        Metodo para guardar la tabla de la interfaz
+    */
     public static void guardar() {
         JTable jTable1 = vista.getTable();
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();

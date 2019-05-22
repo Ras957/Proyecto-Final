@@ -39,6 +39,14 @@ public class Conexion {
 		this.password=password;		
 	}
     
+    /**
+        @author Daniel
+        Lanza excepciones para que no se detenga el programa
+        Realiza la conexion entre la Interfaz y la base de datos
+     * @throws javax.xml.parsers.ParserConfigurationException
+     * @throws org.xml.sax.SAXException
+     * @throws java.io.IOException
+    */    
     public Conexion() throws ParserConfigurationException, SAXException, IOException {
         File file=new File("bbdd.xml");
         DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance()
@@ -70,6 +78,13 @@ public class Conexion {
         }
     }
     
+    /**
+        @author Daniel
+     * @return this.estado
+     * @throws java.lang.Exception
+        @parameter ArrayList<Sospechoso> data
+        Metodo para conectar con la base de datos
+    */
     public boolean conectar() throws Exception
 	{
 		try

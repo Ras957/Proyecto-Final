@@ -18,14 +18,22 @@ public class Store implements Serializable {
 
     public Store() {
     }
-
+    
     public Store(String[] codes) {
         String[] ddefault = {""};
         for (String code : codes) {
             addItem(code, ddefault);
         }
     }
-
+    
+    /**
+        @author Daniel
+     * @param code
+     * @param value
+     * @return true
+        @parameter String code, String[] value
+        Añade un item a un HashMap de String,String[]
+    */
     public boolean addItem(String code, String[] value) {
 
         if (stockedItems.containsKey(code)) {
@@ -37,7 +45,14 @@ public class Store implements Serializable {
         return true;
 
     }
-
+    
+    /**
+        @author Daniel
+     * @param code
+     * @return false
+        @parameter String code
+        Borrar el objeto que se le pasa por referencia del HashMap
+    */
     public boolean removeItem(String code) {
 
         if (stockedItems.containsKey(code)) {
@@ -51,7 +66,14 @@ public class Store implements Serializable {
         return false;
 
     }
-
+    
+    /**
+        @author Daniel
+     * @param code
+     * @return a
+        @parameter String code 
+        Buscar un objeto de la lista de objetos que con valor especifico
+    */
     public boolean findItem(String code) {
 
         return stockedItems.containsKey(code);

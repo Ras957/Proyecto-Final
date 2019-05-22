@@ -50,7 +50,11 @@ public class GUI extends javax.swing.JFrame {
         Store defaultData = new Store(cols);
         insertaLista(defaultData);
     }
-
+    /*
+        @author Samuel
+        @parameter Store data
+        metodo al cual se le pasa un Objeto Store y lo introduce en a lista    
+    */
     public void insertaLista(Store data) {
         DefaultTableModel model = new DefaultTableModel();
         data.stockedItems.forEach((k, v) -> {
@@ -62,6 +66,11 @@ public class GUI extends javax.swing.JFrame {
 
     }
 
+    /*
+        @author Daniel
+        @parameter ArrayList<Sospechoso> data
+        Metodo que recibe un arrayList de sospechosos para introducirlo en la tabla de la interfaz
+    */
     public void ArrayToTable(ArrayList<Sospechoso> data) {
 
         DefaultTableModel model = new DefaultTableModel();
@@ -76,7 +85,11 @@ public class GUI extends javax.swing.JFrame {
             model.addRow(rowData);
         }
     }
-
+    
+    /*
+        @author Samuel
+        Este metodo sirve para poner Icono en la Ventana
+    */
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("iconos/PoliceIcon.png"));

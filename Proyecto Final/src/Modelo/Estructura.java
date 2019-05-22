@@ -26,6 +26,14 @@ public class Estructura {
 
     private static Conexion myConexion;
 
+    /**
+        @author Samuel
+      
+        Lanza Un ArrayList de Sospechosos para que la interfaz lo recoja en su metodo y lo saque por pantalla
+     * @return Sospechosos
+     * @throws java.sql.SQLException
+     * @throws java.io.IOException
+    */
     public static ArrayList<Sospechoso> listarSospechosos() throws SQLException, IOException {
         ArrayList<Sospechoso> sospechosos = new ArrayList<>();
        
@@ -110,6 +118,13 @@ public class Estructura {
 
     }
     
+    /**
+        @author Daniel
+     * @param m
+     * @param sos
+        
+        Recorre y muestra la tabla
+    */
     public static void mostrarTabla(DefaultTableModel m, ArrayList<Sospechoso> sos){
         int size=sos.size();
         
@@ -118,6 +133,13 @@ public class Estructura {
         }
     }
     
+    /**
+        @author Daniel
+     * @param sos
+    
+        Recorre y muestra los telefonos
+     * @return devolver
+    */
     public static String mostrarTelefonos(Sospechoso sos){
        String devolver = null;
        int sizeTelefonos=sos.getTelefonos().size();
@@ -129,6 +151,13 @@ public class Estructura {
       return devolver;
     }
     
+    /**
+        @author Daniel
+     * @param sos
+      
+        Recorre y muestra los Correos
+     * @return devolver
+    */
     public static String mostrarCorreos(Sospechoso sos){
        String devolver = null;
        int sizelist=sos.getCorreos().size();
@@ -140,6 +169,13 @@ public class Estructura {
       return devolver;
     }
     
+    /**
+        @author Daniel
+     * @param sos
+      
+        Recorre y muestra las matriculas
+     * @return devolver
+    */
     public static String mostrarMatricula(Sospechoso sos){
        String devolver = null;
        int sizelist=sos.getMatriculas().size();
@@ -150,6 +186,14 @@ public class Estructura {
        }
       return devolver;
     }
+    
+    /**
+        @author Daniel
+     * @param sos
+      
+        Recorre y muestra las Direcciones
+     * @return devolver
+    */
     public static String mostrarDireccion(Sospechoso sos){
        String devolver = null;
        int sizelist=sos.getDirecciones().size();
@@ -160,6 +204,14 @@ public class Estructura {
        }
       return devolver;
     }
+    
+    /**
+        @author Daniel
+       
+        Recorre y muestra los Antecedentes
+     * @param sos
+     * @return devolver
+    */
     public static String mostrarAntecedentes(Sospechoso sos){
        String devolver = null;
        int sizelist=sos.getAntecedentes().size();
@@ -170,6 +222,14 @@ public class Estructura {
        }
       return devolver;
     }
+    
+    /**
+        @author Daniel
+     * @param sos
+        
+        Recorre y muestra los Hechos
+        * @return devolver
+    */
     public static String mostrarHechos(Sospechoso sos){
        String devolver = null;
        int sizelist=sos.getHechos().size();
@@ -181,6 +241,14 @@ public class Estructura {
       return devolver;
     }
     
+    /**
+        @author Daniel
+     * @param sos
+    
+        Busca los lospechosos relaccionados con el que le es enviado
+     * @return Sospechosos
+     * @throws java.sql.SQLException
+    */
     public static ArrayList<Sospechoso> buscarSospechosos(Sospechoso sos) throws SQLException {
         ArrayList<Sospechoso> sospechosos = new ArrayList<>();
        
@@ -266,6 +334,12 @@ public class Estructura {
         return sospechosos;
     }
 
+    /**
+        @author Daniel
+     * @return generada
+        
+        Genera la estructura de la base de datos lanza un boolean si lo consigue
+    */
     public static boolean generarEstructura() {
         boolean generada = true;
         String lineaSQL;
@@ -369,6 +443,15 @@ public class Estructura {
         return generada;
     }
     
+    /**
+        @author Samuel
+     * @param nombre
+        
+        Inserta Sospechosos en la base de datos con los parametros que le llegan desde la base de datos
+     * @param apellidos
+     * @return devuelve
+     * @throws java.sql.SQLException
+    */
     public static boolean insertarSospechoso(String nombre, String apellidos) throws SQLException{
         boolean devuelve=false;
                 
@@ -392,6 +475,15 @@ public class Estructura {
         return devuelve;        
     }
     
+    /**
+        @author Samuel
+     * @param matricula
+        
+        Inserta veiculo
+     * @param id
+     * @return devuelve
+     * @throws java.sql.SQLException
+    */
     public static boolean insertarVehiculo(String matricula, int id) throws SQLException{
         boolean devuelve;
                 
@@ -415,6 +507,15 @@ public class Estructura {
         return devuelve;        
     }
     
+    /**
+        @author Samuel
+     * @param email
+     * @param id
+     * @return devuelve
+     * @throws java.sql.SQLException
+        
+        Inserta Correo
+    */
     public static boolean insertarCorreo(String email, int id) throws SQLException{
         boolean devuelve;
                 
@@ -438,6 +539,16 @@ public class Estructura {
         return devuelve;        
     }
     
+    
+    /**
+        @author Samuel
+        
+        Inserta Direccion
+     * @param direccion
+     * @param id
+     * @return devuelve
+     * @throws java.sql.SQLException
+    */
     public static boolean insertarDireccion(String direccion, int id) throws SQLException{
         boolean devuelve;
                 
@@ -461,6 +572,15 @@ public class Estructura {
         return devuelve;        
     }
     
+    /**
+        @author Samuel
+     * @param telefono
+     * @param id
+        
+        Inserta Telefono
+     * @return devuelve
+     * @throws java.sql.SQLException
+    */
     public static boolean insertarTelefono(int telefono, int id) throws SQLException{
         boolean devuelve;
                 
@@ -484,6 +604,15 @@ public class Estructura {
         return devuelve;        
     }
     
+    /**
+        @author Samuel
+     * @param desc
+     * @param id
+     * @return devuelve
+     * @throws java.sql.SQLException
+        @parameter String desc, int id
+        Inserta Antecedentes
+    */
     public static boolean insertarAntecedentes(String desc, int id) throws SQLException{
         boolean devuelve;
                 
@@ -507,6 +636,15 @@ public class Estructura {
         return devuelve;        
     }
     
+    /**
+        @author Samuel
+     * @param desc
+     * @param id
+     * @return devulve
+     * @throws java.sql.SQLException
+        @parameter String desc, int id
+        Inserta Hechos
+    */
     public static boolean insertarHechos(String desc, int id) throws SQLException{
         boolean devuelve;
                 
@@ -530,6 +668,15 @@ public class Estructura {
         return devuelve;        
     }
     
+    /**
+        @author Samuel
+     * @param imagen
+     * @param id
+     * @throws java.sql.SQLException
+        @parameter String imagen, int id
+        * @return devulve
+        Inserta la foto
+    */
     public static boolean insertarFotos(String imagen, int id) throws SQLException{
         boolean devuelve;
                 
@@ -553,6 +700,13 @@ public class Estructura {
         return devuelve;        
     }
     
+    /**
+        @author Samuel
+        
+       Detecta al ultimo sospechoso
+     * @return int ultimoid
+     * @throws java.sql.SQLException 
+    */
     public static int ultimoSospechoso() throws SQLException{
         int ultimoid;
         
@@ -570,7 +724,14 @@ public class Estructura {
           
         return ultimoid;
     }
-
+    
+    /**
+        @author Samuel
+     * @param codigo
+     * @return nFilas
+        @parameter int codigo
+        Borra un sospechoso de la base de datos
+    */
     public static int borrarSospechoso(int codigo){
         String lineaSQL;
 		//Objeto de tipo Statement
@@ -603,6 +764,15 @@ public class Estructura {
 		return nFilas;
     }
     
+    /**
+        @author Samuel
+     * @param id
+     * @return devolver
+     * @throws java.sql.SQLException
+     * @throws java.io.IOException
+        @parameter int id
+        Busca Sospechosos por ID
+    */
     public static Sospechoso buscarSospechosoId(int id) throws SQLException, IOException{
         ArrayList<Sospechoso> sos=new ArrayList<>();
         Sospechoso devolver = null;
@@ -615,6 +785,7 @@ public class Estructura {
         return devolver;
     }
     
+   
     public static void insertarTelefono(String telefono, int ultimoSospechoso) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
