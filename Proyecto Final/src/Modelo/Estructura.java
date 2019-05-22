@@ -271,98 +271,93 @@ public class Estructura {
         String lineaSQL;
         Statement sentencia;
         try {
-            lineaSQL = "CREATE TABLE IF NOT EXISTS SOSPECHOSOS"
-                    + " (Id                int(9) AUTO_INCREMENT,"
-                    + " nombre             varchar(20),"
-                    + " primerApellido     varchar(20),"
-                    + " segundoApellido     varchar(20),"
-                    + " PRIMARY KEY(Id))";
+            lineaSQL = "CREATE TABLE IF NOT EXISTS SOSPECHOSO"
+                    + "(Id          integer primary key AUTO_INCREMENT,"
+                    + " Nombre      varchar(50),"
+                    + " Apellidos   varchar(100))ENGINE=InnoDB";
 
             sentencia = myConexion.getConexion().createStatement();
             sentencia.executeUpdate(lineaSQL);
 
             lineaSQL = "CREATE TABLE IF NOT EXISTS ACOMPANYA"
-                    + " (Id_Sospechoso1           int(8) PRIMARY KEY,"
-                    + " Id_Sospechoso             int(8),"
+                    + " (Id_Sospechoso1           integer,"
+                    + " Id_Sospechoso2            integer,"
+                    + " primary key(Id_Sospechoso1,Id_Sospechoso2),"
                     + " foreign key (id_Sospechoso1) references Sospechoso(Id) on delete cascade,"
-                    + " foreign key (id_Sospechoso2) references Sospechoso(Id) on delete cascade";
+                    + " foreign key (id_Sospechoso2) references Sospechoso(Id) on delete cascade"
+                    + ")ENGINE=InnoDB";
 
             sentencia = myConexion.getConexion().createStatement();
             sentencia.executeUpdate(lineaSQL);
 
-            lineaSQL = "CREATE TABLE IF NOT EXISTS Telefono("
-                    + "    Telefono int(10),"
-                    + "    Tipo varchar(20),"
-                    + "    id_Sospechoso int(8),"
-                    + "    id int(8) AUTO_INCREMENT,"
-                    + "    Primary key(id),"
-                    + "    foreign key (id_Sospechoso) references Sospechoso(Id) on delete cascade)";
-
-            sentencia = myConexion.getConexion().createStatement();
-            sentencia.executeUpdate(lineaSQL);
-
-            lineaSQL = "CREATE TABLE IF NOT EXISTS Antecedentes("
-                    + "    Descripcion varchar(200),"
-                    + "    id_Sospechoso int(8),"
-                    + "    id int(8) AUTO_INCREMENT,"
-                    + "    Primary key(id),"
+            lineaSQL = "CREATE TABLE IF NOT EXISTS TELEFONO("
+                    + "    Id               integer primary key AUTO_INCREMENT,"
+                    + "    Telefono         int(10),"
+                    + "    Tipo             varchar(20),"
+                    + "    id_Sospechoso    integer,"
                     + "    foreign key (id_Sospechoso) references Sospechoso(Id) on delete cascade"
-                    + ")";
+                    + ")ENGINE=InnoDB";
 
             sentencia = myConexion.getConexion().createStatement();
             sentencia.executeUpdate(lineaSQL);
 
-            lineaSQL = "CREATE TABLE IF NOT EXISTS Correos("
-                    + "    email char(50),"
-                    + "    id_Sospechoso int(8),"
-                    + "    id int(8) AUTO_INCREMENT,"
-                    + "    Primary key(id),"
+            lineaSQL = "CREATE TABLE IF NOT EXISTS ANTECEDENTES("
+                    + "    Id               integer primary key AUTO_INCREMENT,"
+                    + "    Descripcion      varchar(200),"
+                    + "    id_Sospechoso    integer,"
                     + "    foreign key (id_Sospechoso) references Sospechoso(Id) on delete cascade"
-                    + ")";
+                    + ")ENGINE=InnoDB";
 
             sentencia = myConexion.getConexion().createStatement();
             sentencia.executeUpdate(lineaSQL);
 
-            lineaSQL = "CREATE TABLE IF NOT EXISTS Direccion("
-                    + "    Direccion varchar(200),"
-                    + "    id int(8) AUTO_INCREMENT,"
-                    + "    id_Sospechoso int(8),"
-                    + "    Primary key(id),"
+            lineaSQL = "CREATE TABLE IF NOT EXISTS CORREOS("
+                    + "    Id               integer primary key AUTO_INCREMENT,"
+                    + "    email            char(50),"
+                    + "    id_Sospechoso    integer,"
                     + "    foreign key (id_Sospechoso) references Sospechoso(Id) on delete cascade"
-                    + ")";
+                    + ")ENGINE=InnoDB";
 
             sentencia = myConexion.getConexion().createStatement();
             sentencia.executeUpdate(lineaSQL);
 
-            lineaSQL = "CREATE TABLE IF NOT EXISTS Hechos("
-                    + "    Descripcion varchar(200),"
-                    + "    id int(8) AUTO_INCREMENT,"
-                    + "    id_Sospechoso int(8),"
-                    + "    Primary key(id),"
+            lineaSQL = "CREATE TABLE IF NOT EXISTS DIRECCION("
+                    + "    Id               integer primary key AUTO_INCREMENT,"
+                    + "    Direccion        varchar(200),"
+                    + "    id_Sospechoso    integer,"
                     + "    foreign key (id_Sospechoso) references Sospechoso(Id) on delete cascade"
-                    + ")";
+                    + ")ENGINE=InnoDB";
 
             sentencia = myConexion.getConexion().createStatement();
             sentencia.executeUpdate(lineaSQL);
 
-            lineaSQL = "CREATE TABLE IF NOT EXISTS Fotos("
-                    + "    Descripcion varchar(200),"
-                    + "    id int(8) AUTO_INCREMENT,"
-                    + "    imagen mediumblob,"
-                    + "    id_Sospechoso int(8),"
-                    + "    Primary key(id),"
+            lineaSQL = "CREATE TABLE IF NOT EXISTS HECHOS("
+                    + "    Id                   integer primary key AUTO_INCREMENT,"
+                    + "    Descripcion          varchar(200),"
+                    + "    id_Sospechoso        integer,"
                     + "    foreign key (id_Sospechoso) references Sospechoso(Id) on delete cascade"
-                    + ")";
+                    + ")ENGINE=InnoDB";
 
             sentencia = myConexion.getConexion().createStatement();
             sentencia.executeUpdate(lineaSQL);
-            
-            lineaSQL = "CREATE TABLE IF NOT EXISTS Vehiculo("
-                    + "    Matricula char(10),"
-                    + "    id_Sospechoso int(8),"
-                    + "    id int(8) AUTO_INCREMENT,"
-                    + "PRIMARY KEY (id, id_Sospechoso),"
-                    + "FOREIGN KEY(ID_Sospechoso) REFERENCES Sospechosos(Id))";
+
+            lineaSQL = "CREATE TABLE IF NOT EXISTS FOTOS("
+                    + "    Id               integer primary key AUTO_INCREMENT,"
+                    + "    Descripcion      varchar(200),"
+                    + "    imagen           mediumblob,"
+                    + "    id_Sospechoso    integer,"
+                    + "    foreign key (id_Sospechoso) references Sospechoso(Id) on delete cascade"
+                    + ")ENGINE=InnoDB";
+
+            sentencia = myConexion.getConexion().createStatement();
+            sentencia.executeUpdate(lineaSQL);
+
+            lineaSQL = "CREATE TABLE IF NOT EXISTS VEHICULO("
+                    + "    Id               integer primary key AUTO_INCREMENT,"
+                    + "    Matricula        char(10),"
+                    + "    id_Sospechoso    integer,"
+                    + "    foreign key (id_Sospechoso) references Sospechoso(Id) on delete cascade"
+                    + ")ENGINE=InnoDB";
 
             sentencia = myConexion.getConexion().createStatement();
             sentencia.executeUpdate(lineaSQL);
